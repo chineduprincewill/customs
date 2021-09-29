@@ -24,14 +24,15 @@ export default function Home () {
                             <img src={homeImage} className="laptop-image" alt="" />
                         </div>
                     </div>
-                </div>
-            </section>
-            <section className="process-section spad">
-                <div className="container-fluid">
-                    <div className="section-title text-center">
+                    <div className="section-title text-center" style={{ marginTop: "-50px"}}>
                         <h2>How to get your license</h2>
                         <p>Below are the procedures to go through to get your license! </p>
                     </div>
+             
+                </div>
+            </section>
+            <section className="process-section spad" style={{ marginTop: "-100px"}}>
+                <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-3 process">
                             <div className="process-step">

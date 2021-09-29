@@ -19,7 +19,7 @@ const Form41 = () => {
                 setBizinfo(res.data.items[0]);
             })
           .catch( err => console.log(err))
-    })
+    }, [userData.userid])
 
     let getForm41;
 

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 import PrivateRoute from './layout/PrivateRoute';
 import DcgRoute from './layout/DcgRoute';
+import CacRoute from './layout/CacRoute';
 
 import Navbar from './layout/Navbar';
 import Footer from './layout/Footer';
@@ -24,6 +25,7 @@ import NewUser from './pages/dcg/NewUser';
 import Commands from './pages/dcg/Commands';
 import NewCommand from './pages/dcg/NewCommand';
 import Applications from './pages/dcg/Applications';
+import Form41List from './pages/cac/Form41List';
 
 function App(props) {
 
@@ -52,6 +54,7 @@ function App(props) {
             <DcgRoute exact path="/commands" component={Commands} />
             <DcgRoute exact path="/new-command" component={NewCommand} />
             <DcgRoute exact path="/applications" component={Applications} />
+            <CacRoute exact path="/form41-list" component={Form41List} />
           </Switch>
         </div>   
         <Footer /> 

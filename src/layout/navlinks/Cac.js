@@ -14,7 +14,7 @@ const Cac = (props) => {
             <nav class="main-menu">
                 <ul class="menu-list">
                     <li><button className="btn btn-warning mr-5">{props.role}</button></li>
-                    <li><Link class="text text-primary" to="/applications">Applications</Link></li>
+                    <li><Link class="text text-primary" to="/form41-list">Form41 List</Link></li>
                 </ul>
             </nav>
         </div>
