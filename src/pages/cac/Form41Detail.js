@@ -23,7 +23,7 @@ const Form41Detail = () => {
                 setFormDetail(res.data.items);
             })
           .catch( err => console.log(err))
-    }, [])
+    }, [id])
 
 
     console.log(formDetail);

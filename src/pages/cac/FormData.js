@@ -28,7 +28,7 @@ const FormData = (props) => {
                 setCommandAcc(res.data.items);
             })
           .catch( err => console.log(err))
-    }, [])
+    }, [userData.commandid])
 
 
     const onChange = (e) => {

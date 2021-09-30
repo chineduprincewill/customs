@@ -186,6 +186,7 @@ const UserDetail = (props) => {
                         </div>
                     </div>
                     <div className="row" style={{ color:"#7d7c7c"}}>
+                        <p>{err}</p>
                         {userdetail}{businessdetail}
                     </div> 
                 </div>
