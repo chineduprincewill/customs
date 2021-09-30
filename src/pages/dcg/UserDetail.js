@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useParams, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import Spinner from '../../layout/Spinner';
 
-const UserDetail = () => {
+const UserDetail = (props) => {
 
     const { id } = useParams();
 
     const [user, setUser] = useState([]);
+
+    const [err, setErr] = useState([]);
 
     const [userInfo, setUserInfo] = useState([]);
 
@@ -34,6 +36,49 @@ const UserDetail = () => {
           .catch( err => console.log(err))
 
     }, [id]);
+
+
+    const verifyAccount = () => {
+
+        const verUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/user/verifyaccount/';
+
+        console.log(`${user[0].userid} AND ${userData.userid} AND ${user[0].commandid}`);
+
+        const fdata = new FormData();
+        fdata.append('UserId', user[0].userid);
+        fdata.append('ApprovedBy', userData.userid);
+        fdata.append('isAccountVerified', 1);
+        fdata.append('commandId', user[0].commandid);
+
+        console.log(fdata);
+
+        const requestOptions = {
+            headers: { 'Content-Type': 'application/json' }
+        };
+
+        if(window.confirm("Are you sure you want to verify this account?")){
+
+            axios
+                .post(verUrl, fdata, requestOptions)
+                .then( res => {
+                    //console.log(res.data);
+                    if(res.data.result === 1)
+                    {
+                        //props.history.push("/user-detail/"+user[0].userid);
+                        props.history.push("/users");
+                    }
+                    else{
+                        setErr("Verification Unsuccessful! Try again");
+                        //setLoader(false);
+                    }
+                })
+                .catch(err => {
+                    console.log(err);
+                    setErr("Verification Unsuccessful! Try again");
+                    //setLoader(false);
+                });
+        }
+    }
 
    // console.log(user);
     console.log(userInfo);
@@ -74,8 +119,8 @@ const UserDetail = () => {
                 <div className="col-md-7">{user[0].commandid}</div>
             </div>
             <div className="row my-4">
-                <div className="col-md-5"><strong>ACCOUNT VERIFIED</strong></div>
-                <div className="col-md-7">{user[0].isaccountverified === 1 ? <span className="text text-success">YES</span> : <span className="text text-danger">NO</span>}</div>
+                <div className="col-md-5"><strong>ACCOUNT VERIFIED ?</strong></div>
+                <div className="col-md-7">{user[0].isaccountverified === 0 ? <button className="btn btn-danger" onClick={verifyAccount}>Click to verify account</button> : <span className="text text-success">VERIFIED!</span>}</div>
             </div>
         </div> 
 
@@ -150,4 +195,4 @@ const UserDetail = () => {
     )
 }
 
-export default UserDetail;
+export default withRouter(UserDetail);

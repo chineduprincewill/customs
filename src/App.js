@@ -26,6 +26,7 @@ import Commands from './pages/dcg/Commands';
 import NewCommand from './pages/dcg/NewCommand';
 import Applications from './pages/dcg/Applications';
 import Form41List from './pages/cac/Form41List';
+import Form41Detail from './pages/cac/Form41Detail';
 
 function App(props) {
 
@@ -55,6 +56,7 @@ function App(props) {
             <DcgRoute exact path="/new-command" component={NewCommand} />
             <DcgRoute exact path="/applications" component={Applications} />
             <CacRoute exact path="/form41-list" component={Form41List} />
+            <CacRoute exact path="/form41-detail/:id" component={Form41Detail} />
           </Switch>
         </div>   
         <Footer /> 
