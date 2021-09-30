@@ -47,6 +47,11 @@ const Form41 = () => {
             </section>
             <section className="contact-page spad">
                 <div className="container">
+                    <div className="row pb-3 mb-3">
+                        <div className="col-md-12">
+                            <Link to="/myforms" className="btn btn-info float-right"><i className="fa fa-plus"></i> My Forms</Link>
+                        </div>
+                    </div>
                     {getForm41}
                 </div>
             </section>

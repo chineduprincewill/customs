@@ -27,6 +27,8 @@ import NewCommand from './pages/dcg/NewCommand';
 import Applications from './pages/dcg/Applications';
 import Form41List from './pages/cac/Form41List';
 import Form41Detail from './pages/cac/Form41Detail';
+import MyForms from './pages/customer/MyForms';
+import MyformDetail from './pages/customer/MyformDetail';
 
 function App(props) {
 
@@ -47,6 +49,8 @@ function App(props) {
             <PrivateRoute exact path="/profile" component={Profile} />
             <PrivateRoute exact path="/messages" component={Messages} />
             <PrivateRoute exact path="/form" component={Form41} />
+            <PrivateRoute exact path="/myforms" component={MyForms} />
+            <PrivateRoute exact path="/myform-detail/:id" component={MyformDetail} />
             <DcgRoute exact path="/users" component={Users} />
             <DcgRoute exact path="/user-detail/:id" component={UserDetail} />
             <DcgRoute exact path="/new-user" component={NewUser} />

@@ -16,7 +16,7 @@ const Customer = (props) => {
                     <li><button className="btn btn-warning mr-5">{props.role}</button></li>
                     <li><Link className="text text-primary" to="/profile">Profile</Link></li>
                     <li><Link className="text text-primary" to="/messages">Messages</Link></li>
-                    <li><Link className="text text-primary" to="/form">Form 41</Link></li>
+                    <li><Link className="text text-primary" to="/myforms">Form 41</Link></li>
                 </ul>
             </nav>
         </div>
