@@ -4,6 +4,8 @@ import { Link, withRouter } from 'react-router-dom';
 import Customer from './navlinks/Customer';
 import Cac from './navlinks/Cac';
 import Dcg from './navlinks/Dcg';
+import Inspector from './navlinks/Inspector';
+import logo from '../img/logo2.png';
 //import { useState } from 'react/cjs/react.development';
 
 const Navbar = (props) => {
@@ -34,16 +36,22 @@ const Navbar = (props) => {
         {
             authLinks = <Dcg role={user.profiletype} logout={logout} />
         }
+        else if(user.profiletype === 'INSPECTOR' || user.profiletype === 'INSPECTOR')
+        {
+            authLinks = <Inspector role={user.profiletype} logout={logout} />
+        }
     }
 
     if(!user || user === undefined){
         navLinks = (
             <header className="header-section clearfix">
                 <div className="container-fluid">
-                    <Link to="/" className="site-logo"></Link>
+                    <Link to="/" className="site-logo">
+                        <img src={logo} alt="logo" style={{ height:"70px" }} />
+                    </Link>
                     <div className="responsive-bar"><i className="fa fa-bars"></i></div>
                     <Link to="/" className="user"><i className="fa fa-user"></i></Link>
-                    <Link to="/sign-in" className="site-btn btn-link border-0 text-primary">Sign in</Link>
+                    <Link to="/sign-in" className="site-btn btn-link border-0 text-dark">Sign in</Link>
                 </div>
             </header>
         )

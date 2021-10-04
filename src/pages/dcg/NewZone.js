@@ -84,7 +84,7 @@ const NewZone = (props) => {
                 <div className="container">
                     <div className="row pb-3 mb-3">
                         <div className="col-md-12">
-                            <Link to="/zones" className="btn btn-info float-right">Return to Zones</Link>
+                            <Link to="/zones" className="btn btn-dark float-right">Return to Zones</Link>
                         </div>
                     </div>
                     <div className="row">
@@ -121,7 +121,7 @@ const NewZone = (props) => {
                                     </div>
                                     {loader ? <Spinner /> :
                                     <div className="col-md-12">
-                                        <button className="site-btn btn-danger btn-block mt-4"><i className="fa fa-plus"></i></button>
+                                        <button className="site-btn btn-success border-success btn-block mt-4">Create zone</button>
                                     </div>
                                     }
                                 </div>

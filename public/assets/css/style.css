@@ -18,6 +18,8 @@
 
 html,
 body {
+	margin: 0;
+	padding: 0;
 	height: 100%;
 	font-family: "Lato", sans-serif;
 	-webkit-font-smoothing: antialiased;
@@ -298,6 +300,7 @@ ol {
 .header-section {
 	position: absolute;
 	width: 100%;
+	background-color: #ffffff;
 	top: 0;
 	padding: 30px 50px 0;
 	z-index: 99;
@@ -339,12 +342,14 @@ ol {
 -----------------------*/
 
 .hero-section {
-	height: 900px;
-	padding-top: 260px;
+	height: 480px;
+	margin-top: 120px;
+	width: 100%;
+	padding: 0;
 	display: block;
 	background-image: url("../img/hero-bg.png");
 	background-size: cover;
-	background-color: #f3f7f9;
+	background-color: #ffffff;
 	background-position: right top;
 	background-repeat: no-repeat;
 	position: relative;
@@ -359,7 +364,7 @@ ol {
 }
 
 .hero-text {
-	padding-top: 60px;
+	padding-top: 20px;
 }
 
 .hero-text h2 {
@@ -368,11 +373,11 @@ ol {
 }
 
 .hero-text h2 span {
-	color: #16d0c5;
+	color: #09942c;
 }
 
 .hero-text h4 {
-	color: #75849a;
+	color: #1f2020;
 	font-size: 22px;
 }
 
@@ -464,6 +469,7 @@ ol {
 
 .process-step {
 	position: relative;
+	background-color: #333;
 	text-align: center;
 	padding: 35px;
 	margin-top: 30px;
@@ -479,10 +485,12 @@ ol {
 
 .process-step h4 {
 	margin-bottom: 15px;
+	color: #FFF;
 }
 
 .process-step p {
 	margin-bottom: 0;
+	color: #FFF;
 }
 
 .process-step:after {
@@ -957,20 +965,21 @@ ol {
 ======================*/
 
 .page-info-section {
-	height: 300px;
-	background-image: url("../img/page-info-bg.png");
+	height: 250px;
 	background-size: cover;
-	background-color: #f3f7f9;
+	background-color: #eeeeee;
 	background-position: right top;
 	background-repeat: no-repeat;
 	position: relative;
 	overflow: hidden;
 	display: block;
-	padding-top: 100px;
+	padding-top: 120px;
+	border-bottom: 1px solid #eeeeee;
 }
 
 .page-info-section h2 {
 	font-size: 48px;
+	color: #227a05;
 }
 
 .site-beradcamb {
@@ -1448,7 +1457,7 @@ ol {
 
 @media (min-width: 1200px) {
 	.container {
-		max-width: 1170px;
+		width: 100%;
 	}
 }
 

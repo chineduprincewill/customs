@@ -56,7 +56,7 @@ const MyForms = () => {
                 <div className="container">
                     <div className="row pb-3 mb-3">
                         <div className="col-md-12">
-                            <Link to="/form" className="btn btn-info float-right"><i className="fa fa-plus"></i> New form41</Link>
+                            <Link to="/form" className="btn btn-dark float-right"><i className="fa fa-plus"></i> New form41</Link>
                         </div>
                     </div>
                     <table className="table table-stripped table-hover col-lg-12">

@@ -93,7 +93,7 @@ const UserDetail = (props) => {
     else{
         userdetail =   
         <div className="col-md-6 border-right">
-            <h3 className="text text-primary border-bottom py-2">Account Information</h3>
+            <h3 className="text text-success border-bottom py-2">Account Information</h3>
             <div className="row my-4 mt-3">
                 <div className="col-md-5"><strong>YOUR ID</strong></div>
                 <div className="col-md-7">{user[0].userid}</div>
@@ -132,7 +132,7 @@ const UserDetail = (props) => {
     }
     else{
         businessdetail = <div className="col-md-6 pl-5">
-        <h3 className="text text-primary border-bottom py-2">Business Information</h3>
+        <h3 className="text text-success border-bottom py-2">Business Information</h3>
         <div className="row my-4 mt-3">
             <div className="col-md-5"><strong>COMPANY NAME</strong></div>
             <div className="col-md-7">{userInfo[0].companyname}</div>
@@ -182,7 +182,7 @@ const UserDetail = (props) => {
                         <div className="col-md-6">
                         </div>
                         <div className="col-md-6">
-                            <Link to="/users" className="btn btn-info float-right">Return to Accounts</Link>
+                            <Link to="/users" className="btn btn-dark float-right">Return to Accounts</Link>
                         </div>
                     </div>
                     <div className="row" style={{ color:"#7d7c7c"}}>

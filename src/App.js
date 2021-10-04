@@ -29,6 +29,9 @@ import Form41List from './pages/cac/Form41List';
 import Form41Detail from './pages/cac/Form41Detail';
 import MyForms from './pages/customer/MyForms';
 import MyformDetail from './pages/customer/MyformDetail';
+import Assignments from './pages/cac/Assignments';
+import AllocDetail from './pages/cac/AllocDetail';
+import InsAssignments from './pages/inspector/InsAssignments';
 
 function App(props) {
 
@@ -61,6 +64,9 @@ function App(props) {
             <DcgRoute exact path="/applications" component={Applications} />
             <CacRoute exact path="/form41-list" component={Form41List} />
             <CacRoute exact path="/form41-detail/:id" component={Form41Detail} />
+            <CacRoute exact path="/assignments" component={Assignments} />
+            <CacRoute exact path="/alloc-detail/:id" component={AllocDetail} />
+            <CacRoute exact path="/ins-assignments" component={InsAssignments} />
           </Switch>
         </div>   
         <Footer /> 

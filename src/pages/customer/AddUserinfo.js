@@ -86,7 +86,7 @@ const AddUserinfo = (props) => {
     return(
         <div>
             <p class="text text-danger mb-3">Oops! Business detail not available!</p>
-            <h3 className="text text-primary border-bottom py-2">Add Business Detail</h3>
+            <h3 className="text text-success border-bottom py-2">Add Business Detail</h3>
             <p><span className="text text-success">{success}</span><span className="text text-danger">{err}</span></p>
             <form className="contact-form ml-3" onSubmit={onSubmit}>
                 <div className="row">
@@ -176,7 +176,7 @@ const AddUserinfo = (props) => {
                     </div>
                     {loader ? <Spinner /> :
                     <div className="col-md-12">
-                        <button className="site-btn btn-danger btn-block mt-4"><i className="fa fa-plus"></i></button>
+                        <button className="site-btn btn-success border-success btn-block mt-4">add business information</button>
                     </div>
                     }
                 </div>

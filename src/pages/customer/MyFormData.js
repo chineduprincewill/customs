@@ -14,7 +14,7 @@ const MyFormData = (props) => {
     return(
         <div className="row">
             <div className="col-md-12 pb-3 mb-3">
-                <Link to="/myforms" className="btn btn-info float-right"><i className="fa fa-plus"></i> My Forms</Link>
+                <Link to="/myforms" className="btn btn-dark float-right"><i className="fa fa-plus"></i> My Forms</Link>
             </div>
             <div className="col-md-6">
                 <div className="row p-3 border-bottom">

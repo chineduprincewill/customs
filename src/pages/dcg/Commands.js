@@ -54,7 +54,7 @@ const Commands = () => {
                 <div className="container">
                 <div className="row pb-3 mb-3">
                         <div className="col-md-12">
-                            <Link to="/new-command" className="btn btn-info float-right"><i className="fa fa-plus"></i> New Command</Link>
+                            <Link to="/new-command" className="btn btn-dark float-right"><i className="fa fa-plus"></i> New Command</Link>
                         </div>
                     </div>
                     <table className="table table-stripped table-hover col-lg-12">

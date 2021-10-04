@@ -128,7 +128,7 @@ const NewUser = (props) => {
                 <div className="container">
                     <div className="row pb-3 mb-3">
                         <div className="col-md-12">
-                            <Link to="/users" className="btn btn-info float-right">Return to Accounts</Link>
+                            <Link to="/users" className="btn btn-dark float-right">Return to Accounts</Link>
                         </div>
                     </div>
                     <div className="row">
@@ -211,6 +211,7 @@ const NewUser = (props) => {
                                                 <option value="CAC">CAC</option>
                                                 <option value="DCGT">DCGT</option>
                                                 <option value="DCG">DCG</option>
+                                                <option value="INSPECTOR">INSPECTOR</option>
                                             </select>
                                             <span><i className="ti-check"></i></span>
                                         </div>
@@ -232,7 +233,7 @@ const NewUser = (props) => {
                                     </div>
                                     {loader ? <Spinner /> :
                                     <div className="col-md-12">
-                                        <button className="site-btn btn-danger btn-block mt-4"><i className="fa fa-plus"></i></button>
+                                        <button className="site-btn btn-success border-success btn-block mt-4">create account</button>
                                     </div>
                                     }
                                 </div>

@@ -221,7 +221,7 @@ const SignUp = (props) => {
                                     </div>
                                     {loader ? <Spinner /> :
                                     <div className="col-md-12">
-                                        <button className="site-btn btn-danger btn-block mt-4">Sign Up</button>
+                                        <button className="site-btn btn-success btn-block border-success mt-4">Sign Up</button>
                                     </div>
                                     }
                                     <small className="ml-3 mt-3"><Link to="/sign-in">Already have an account yet? Click here to Sign in</Link></small>

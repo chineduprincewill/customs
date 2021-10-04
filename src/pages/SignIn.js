@@ -104,10 +104,10 @@ const SignIn = (props) => {
                                     </div>
                                     {loader ? <Spinner /> :
                                     <div className="col-md-12">
-                                        <button className="site-btn btn-danger mt-4">Sign In</button>
+                                        <button className="site-btn btn-success border-success btn-block mt-4">Sign In</button>
                                     </div>
                                     }
-                                    <small className="ml-3 mt-3"><Link to="/sign-up">Don't have an account yet? Click here to Sign up</Link></small>
+                                    <small className="ml-3 mt-3 text-success"><Link to="/sign-up">Don't have an account yet? Click here to Sign up</Link></small>
                                 </div>
                             </form>
                         </div>

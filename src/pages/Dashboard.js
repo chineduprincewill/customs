@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import Customer from './dashboard/Customer';
 import Cac from './dashboard/Cac';
 import Dcg from './dashboard/Dcg';
+import Inspector from './dashboard/Inspector';
 
 const Dashboard = (props) => {
 
@@ -19,6 +20,9 @@ const Dashboard = (props) => {
     }
     else if(userData.profiletype === 'DCG'){
         dashview = <Dcg />
+    }
+    else if(userData.profiletype === 'INSPECTOR'){
+        dashview = <Inspector />
     }
 
     return (

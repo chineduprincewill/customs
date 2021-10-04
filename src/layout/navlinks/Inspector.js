@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import logo from '../../img/logo2.png';
 
-const Cac = (props) => {
+const Inspector = (props) => {
 
     const signOut = props.logout;
 
@@ -18,14 +18,11 @@ const Cac = (props) => {
             <nav class="main-menu">
                 <ul class="menu-list">
                     <li><button className="btn btn-warning mr-5">{props.role}</button></li>
-                    <li><Link class="text text-dark" to="/zones">Zones</Link></li>
-                    <li><Link class="text text-dark" to="/commands">Commands</Link></li>
-                    <li><Link class="text text-dark" to="/users">Users</Link></li>
-                    <li><Link class="text text-dark" to="/applications">Applications</Link></li>
+                    <li><Link class="text text-dark" to="/ins-assignments">My Assignments</Link></li>
                 </ul>
             </nav>
         </div>
     )
 }
 
-export default Cac;
+export default Inspector;

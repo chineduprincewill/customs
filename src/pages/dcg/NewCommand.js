@@ -98,7 +98,7 @@ const NewCommand = (props) => {
                 <div className="container">
                     <div className="row pb-3 mb-3">
                         <div className="col-md-12">
-                            <Link to="/commands" className="btn btn-info float-right">Return to Commands</Link>
+                            <Link to="/commands" className="btn btn-dark float-right">Return to Commands</Link>
                         </div>
                     </div>
                     <div className="row">
@@ -138,7 +138,7 @@ const NewCommand = (props) => {
                                     </div>
                                     {loader ? <Spinner /> :
                                     <div className="col-md-12">
-                                        <button className="site-btn btn-danger btn-block mt-4"><i className="fa fa-plus"></i></button>
+                                        <button className="site-btn btn-success btn-block mt-4">create command</button>
                                     </div>
                                     }
                                 </div>
