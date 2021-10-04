@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import Spinner from '../../layout/Spinner';
+import SenderData from '../SenderData';
 
 const AssData = (props) => {
 
     const userData = JSON.parse(localStorage.getItem("userData"));
 
     const [loader, setLoader] = useState(false);
+
+    const [getComments, setGetComments] = useState();
 
     const [comment, setComment] = useState({
         message: ""
@@ -21,6 +24,17 @@ const AssData = (props) => {
     var str = assInfo[0].MESSAGE;
 
     var formID = str.replace(/ .*/,'');
+
+
+    useEffect(() => {
+        const apiUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/form41/comments/'+formID;
+
+        axios.get(apiUrl)
+          .then( res => {
+                setGetComments(res.data.items);
+            })
+          .catch( err => console.log(err))
+    }, [formID])
 
     const onChange = (e) => {
 
@@ -56,7 +70,7 @@ const AssData = (props) => {
                 //console.log(res.data);
                 if(res.data.result === 1)
                 {
-                    props.history.push("/zones");
+                    props.history.push("/ins-assignments");
                 }
                 else{
                     setErr("Comment could not be submitted! Try again");
@@ -72,10 +86,41 @@ const AssData = (props) => {
 
     }
 
+
+    let commentList;
+
+    if(getComments === undefined || getComments.length === 0){
+        commentList = <div className="alert alert-warning p-3">No Comments!</div>
+    }
+    else{
+        commentList = getComments.map(item => (
+            <div className="col-md-12 border-bottom"  key={item.idcomment}>
+                <div className="row my-3">
+                    <div className="col-md-3">Sender</div>
+                    <div className="col-md-9">
+                        <SenderData userid={item.iduser} />
+                    </div>
+                </div>
+                <div className="row my-3">
+                    <div className="col-md-3">Message</div>
+                    <div className="col-md-9">
+                        {item.message}
+                    </div>
+                </div>
+                <div className="row my-3">
+                    <div className="col-md-3">Date</div>
+                    <div className="col-md-9">
+                        {item.message_date}
+                    </div>
+                </div>
+            </div>
+        ))
+    }
+
     return(
         <div>
             <div className="row">
-                <div className="col-md-7">
+                <div className="col-md-6">
                     <div className="row p-3 border-bottom">
                         <div className="col-md-4">EXCISE TRADER</div>
                         <div className="col-md-8">{assInfo[0].TRADER_USER_DETAILS ? assInfo[0].TRADER_USER_DETAILS[0].FIRSTNAME+" "+assInfo[0].TRADER_USER_DETAILS[0].LASTNAME : ""}</div>
@@ -117,7 +162,7 @@ const AssData = (props) => {
                         <div className="col-md-8">{assInfo[0].EXPIRY_DATE}</div>
                     </div>
                 </div>
-                <div className="col-md-5 border-left">
+                <div className="col-md-6 border-left">
                         <form className="contact-form ml-3" onSubmit={onSubmit}>
                             <div className="row">
                                 <div className="col-md-12">
@@ -125,7 +170,7 @@ const AssData = (props) => {
                                     <p className="text text-danger">{err}</p>
                                     <div className="form-group">
                                         <textarea 
-                                            name="comment"
+                                            name="message"
                                             className="form-control border-0 pl-0"
                                             onChange={onChange}
                                             placeholder="Add comment"
@@ -141,10 +186,13 @@ const AssData = (props) => {
                                 </div>
                             </div>
                         </form>
+                        <div className="col-md-12 p-3 mb-5 border-bottom"></div>
+                            <h4 className="text text-success p-3  border-bottom mb-3">Comments</h4>
+                            {commentList}
                 </div>
             </div>
         </div>
     )
 }
 
-export default AssData;
+export default withRouter(AssData);
