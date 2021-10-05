@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
+import UploadDocuments from './UploadDocuments';
+
 const MyFormData = (props) => {
 
     //const userData = JSON.parse(localStorage.getItem("userData"));
@@ -74,8 +76,6 @@ const MyFormData = (props) => {
                     <div className="col-md-6">{formInfo[0].PRODUCT_DESCRIPTION}</div>
                 </div>
                 
-            </div>
-            <div className="col-md-6 border-left">
                 <div className="row p-3 border-bottom">
                     <div className="col-md-6">SELLING UNIT PRICE</div>
                     <div className="col-md-6">{formInfo[0].SELLING_UNIT_PRICE}</div>
@@ -128,6 +128,10 @@ const MyFormData = (props) => {
                     <div className="col-md-6">COMMAND</div>
                     <div className="col-md-6">{formInfo[0].COMMAND ? formInfo[0].COMMAND[0].COMMANDNAME : ""}</div>
                 </div>
+            </div>
+            
+            <div className="col-md-6 border-left">
+                <UploadDocuments formid={formInfo[0].IDFORM} />
             </div>
         </div>
     )
