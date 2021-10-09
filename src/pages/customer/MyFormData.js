@@ -5,7 +5,7 @@ import UploadDocuments from './UploadDocuments';
 
 const MyFormData = (props) => {
 
-    //const userData = JSON.parse(localStorage.getItem("userData"));
+    const userData = JSON.parse(localStorage.getItem("userData"));
 
     const { formInfo } = props;
 
@@ -16,7 +16,7 @@ const MyFormData = (props) => {
     return(
         <div className="row">
             <div className="col-md-12 pb-3 mb-3">
-                <Link to="/myforms" className="btn btn-dark float-right"><i className="fa fa-plus"></i> My Forms</Link>
+                {userData.profiletype === "CUSTOMER" && <Link to="/myforms" className="btn btn-dark float-right"><i className="fa fa-plus"></i> My Forms</Link>}
             </div>
             <div className="col-md-6">
                 <div className="row p-3 border-bottom">
