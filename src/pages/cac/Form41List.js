@@ -37,7 +37,10 @@ const Form41List = () => {
                 <td>{item.CNAME}</td>
                 <td>{item.COMMAND ? item.COMMAND[0].COMMANDNAME : "..."}</td>
                 <td>{item.PRODUCTCATEGORY ? item.PRODUCTCATEGORY[0].TARIFF_DESCRIPTION : "..."}</td>
-                <td><Link className="btn btn-link text-info" to={`form41-detail/${item.IDFORM}`}><i className="fa fa-search"></i></Link></td>
+                <td>
+                    <Link className="btn btn-link text-info" to={`form41-detail/${item.IDFORM}`}><i className="fa fa-tasks" title="Assign to officer"></i></Link>
+                    <Link className="btn btn-link text-primary" to={`myform-detail/${item.IDFORM}`}><i className="fa fa-search"></i></Link>
+                </td>
             </tr>
         ))
     }

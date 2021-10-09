@@ -85,7 +85,7 @@ const AddUserinfo = (props) => {
     
     return(
         <div>
-            <p class="text text-danger mb-3">Oops! Business detail not available!</p>
+            <p className="text text-danger mb-3">Oops! Business detail not available!</p>
             <h3 className="text text-success border-bottom py-2">Add Business Detail</h3>
             <p><span className="text text-success">{success}</span><span className="text text-danger">{err}</span></p>
             <form className="contact-form ml-3" onSubmit={onSubmit}>
