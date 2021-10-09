@@ -144,7 +144,7 @@ const AssData = (props) => {
                     <div className="row p-3 border-bottom">
                         <div className="col-md-4">FORM ID</div>
                         <div className="col-md-8">
-                            <Link to={`/form41-detail/${formID}`} className="btn btn-dark">
+                            <Link to={`/myform-detail/${formID}`} className="btn btn-dark">
                                 CLICK TO VIEW FORM
                             </Link>
                         </div>
