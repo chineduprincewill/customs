@@ -35,14 +35,14 @@ const FormDatas = (props) => {
 
     useEffect(() => {
 
-        const apiUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/users/command/'+userData.commandid;
+        const apiUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/users/';
 
         axios.get(apiUrl)
           .then( res => {
                 setCommandAcc(res.data.items);
             })
           .catch( err => console.log(err))
-    }, [userData.commandid])
+    }, [])
 
 
     const onChange = (e) => {
@@ -74,7 +74,7 @@ const FormDatas = (props) => {
         fdata.append('oco_userid', inspectionAcc.oco_userid);
         fdata.append('message', formInfo[0].IDFORM+" : "+inspectionAcc.message);
         fdata.append('status', inspectionAcc.status);
-        fdata.append('phone', inspectionAcc.status);
+       // fdata.append('phone', inspectionAcc.status);
         fdata.append('assignment_date', inspectionAcc.assignment_date);
         fdata.append('expiry_date', inspectionAcc.expiry_date);
 

@@ -54,7 +54,9 @@ const AllocDetail = () => {
             <section className="contact-page spad">
                 <div className="container">
                     {assInfo}
+                    <Link to="/license" className="btn btn-success mt-5">Generate License</Link>
                 </div>
+                
             </section>
         </div>
     )

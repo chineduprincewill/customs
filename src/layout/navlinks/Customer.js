@@ -21,6 +21,7 @@ const Customer = (props) => {
                     <li><Link className="text text-dark" to="/profile">Profile</Link></li>
                     <li><Link className="text text-dark" to="/messages">Messages</Link></li>
                     <li><Link className="text text-dark" to="/myforms">Form 41</Link></li>
+                    <li><Link className="text text-dark" to="/pay">Pay For Form41</Link></li>
                 </ul>
             </nav>
         </div>

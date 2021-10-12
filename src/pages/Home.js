@@ -16,10 +16,10 @@ export default function Home () {
     return (
         <div>
             <section className="hero-section border-bottom">
-                <div className="container">
+                <div className="container-fluid">
                     <div className="row">
-                        <div className="col-md-6 hero-text text-right">
-                            <h2 style={{ fontSize: "50px" }}><span>Excise Traders' License <br/>Procurement Portal</span></h2>
+                        <div className="col-md-5 hero-text text-right">
+                            <h2 style={{ fontSize: "50px" }} className="mt-4"><span>Excise Traders' License <br/>Procurement Portal</span></h2>
                             <h4>Obtain your Manufacturing License certificate from
                                 our Automated portal by following the provided
                                 Procedures Simplified to make the registrationnpm
@@ -29,6 +29,7 @@ export default function Home () {
                                 <Link to="/sign-in" className="site-btn btn-success border-success">Get started ...</Link>
                             </form>
                         </div>
+                        <div className="col-md-1"></div>
                         <div className="col-md-6">
                             <MDBCarousel showIndicators showControls>
                                 

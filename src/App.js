@@ -32,6 +32,8 @@ import MyformDetail from './pages/customer/MyformDetail';
 import Assignments from './pages/cac/Assignments';
 import AllocDetail from './pages/cac/AllocDetail';
 import InsAssignments from './pages/inspector/InsAssignments';
+import Pay from './pages/customer/Pay';
+import License from './pages/dcg/License';
 
 function App(props) {
 
@@ -54,6 +56,7 @@ function App(props) {
             <PrivateRoute exact path="/form" component={Form41} />
             <PrivateRoute exact path="/myforms" component={MyForms} />
             <PrivateRoute exact path="/myform-detail/:id" component={MyformDetail} />
+            <PrivateRoute exact path="/pay" component={Pay} />
             <DcgRoute exact path="/users" component={Users} />
             <DcgRoute exact path="/user-detail/:id" component={UserDetail} />
             <DcgRoute exact path="/new-user" component={NewUser} />
@@ -62,11 +65,12 @@ function App(props) {
             <DcgRoute exact path="/commands" component={Commands} />
             <DcgRoute exact path="/new-command" component={NewCommand} />
             <DcgRoute exact path="/applications" component={Applications} />
+            <DcgRoute exact path="/license" component={License} />
             <CacRoute exact path="/form41-list" component={Form41List} />
             <CacRoute exact path="/form41-detail/:id" component={Form41Detail} />
             <CacRoute exact path="/assignments" component={Assignments} />
             <CacRoute exact path="/alloc-detail/:id" component={AllocDetail} />
-            <CacRoute exact path="/ins-assignments" component={InsAssignments} />
+            <PrivateRoute exact path="/ins-assignments" component={InsAssignments} />
           </Switch>
         </div>   
         <Footer /> 
