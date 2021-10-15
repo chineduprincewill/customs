@@ -11,14 +11,33 @@ const MyFormData = (props) => {
 
     console.log(props.formInfo[0]);
 
+    const removeDateParts = (date) => {
 
+        var str = date;
+        var strArr = str.split("T");
+
+        return strArr[0];
+    }
 
     return(
         <div className="row">
             <div className="col-md-12 pb-3 mb-3">
                 {userData.profiletype === "CUSTOMER" && <Link to="/myforms" className="btn btn-dark float-right"><i className="fa fa-plus"></i> My Forms</Link>}
+                {userData.profiletype === "CAC" && <Link to="/form41-list" className="btn btn-primary ml-3 float-right"><i className="fa fa-arrow-right"></i> Forms List</Link>} 
+                {userData.profiletype === "CAC" && <Link to="/assignments" className="btn btn-success ml-3 float-right"> Assignments</Link>}
+                {userData.profiletype === "CAC" && <Link to={`/form41-detail/${formInfo[0].IDFORM}`} className="btn btn-dark float-right"> Assign to officer</Link>}
+                {userData.profiletype === "INSPECTOR" && <Link to="/ins-assignments" className="btn btn-dark float-right"> Assignments</Link>}
             </div>
             <div className="col-md-6">
+            <div className="row p-3 border-bottom">
+                    <div className="col-md-6 pt-3">APPLICATION STATUS</div>
+                    <div className="col-md-6">
+                        {formInfo[0].STATUS === 0 && <span className="site-btn btn-link border-white text-primary">Processing ...</span>}
+                        {formInfo[0].STATUS === 1 && <Link to={`/pr-license/${formInfo[0].IDFORM}`} className="site-btn btn-info border-info">Provisional License</Link>}
+                        {formInfo[0].STATUS === 2 && <Link to={`/license/${formInfo[0].IDFORM}`} className="site-btn btn-success border-success">Download License</Link>}
+                        {formInfo[0].STATUS === 3 && <span className="site-btn btn-link border-white text-danger">Declined!</span>}
+                    </div>
+                </div>
                 <div className="row p-3 border-bottom">
                     <div className="col-md-6">COMPANY</div>
                     <div className="col-md-6">{formInfo[0].CNAME}</div>
@@ -32,11 +51,11 @@ const MyFormData = (props) => {
                     <div className="col-md-6">{formInfo[0].REGISTEREDADDRESS}</div>
                 </div>
                 <div className="row p-3 border-bottom">
-                    <div className="col-md-6">DESCRIPTIONOFBUSINESS</div>
+                    <div className="col-md-6">DESCRIPTION OF BUSINESS</div>
                     <div className="col-md-6">{formInfo[0].DESCRIPTIONOFBUSINESS}</div>
                 </div>
                 <div className="row p-3 border-bottom">
-                    <div className="col-md-6">PURPOSEOFBUSINESS</div>
+                    <div className="col-md-6">PURPOSE OF BUSINESS</div>
                     <div className="col-md-6">{formInfo[0].PURPOSEOFBUSINESS}</div>
                 </div>
                 <div className="row p-3 border-bottom">
@@ -53,7 +72,7 @@ const MyFormData = (props) => {
                 </div>
                 <div className="row p-3 border-bottom">
                     <div className="col-md-6">EXPECTED COMPLETION DATE</div>
-                    <div className="col-md-6">{formInfo[0].EXPECTED_COMPLETION_DATE}</div>
+                    <div className="col-md-6">{removeDateParts(formInfo[0].EXPECTED_COMPLETION_DATE)}</div>
                 </div>
                 <div className="row p-3 border-bottom">
                     <div className="col-md-6">BRAND NAMES</div>
@@ -132,6 +151,12 @@ const MyFormData = (props) => {
             
             <div className="col-md-6 border-left">
                 <UploadDocuments formid={formInfo[0].IDFORM} />
+                
+            {userData.profiletype === "CUSTOMER" && <div className="col-md-12 mt-3 border-top">
+                    <p className="bg-dark text-white p-3">Ensure you have uploaded all the required documents as listed in the <strong>Select document title</strong> dropdown above to complete your form application and then click the button below to make your payment for the application. <br/><br/>Note : <strong>IF THE DOCUMENTS ARE NOT COMPLETE, YOUR APPLICATION WILL NOT BE APPROVED!</strong> </p>
+                    <Link to="/pay" className="site-btn btn-success btn-block border-success mt-3">Pay for Form41 application</Link>
+                </div>}
+                
             </div>
         </div>
     )

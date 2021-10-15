@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-import Spinner from '../../layout/Spinner';
-
 const MyForms = () => {
 
     const userData = JSON.parse(localStorage.getItem("userData"));
@@ -24,7 +22,7 @@ const MyForms = () => {
     let myformlist;
 
     if(myformData === undefined || myformData.length === 0 ){
-        myformlist = <Spinner />
+        myformlist = <tr><td colSpan="6"><span className="text text-danger my-2">You have no form record yet! Click the New Form41 Button to add form information</span></td></tr>
     }
     else{
         myformlist = myformData.map(item => (

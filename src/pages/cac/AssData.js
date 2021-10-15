@@ -10,6 +10,9 @@ const AssData = (props) => {
     const userData = JSON.parse(localStorage.getItem("userData"));
 
     const [loader, setLoader] = useState(false);
+    const [caloader, setCaloader] = useState(false);
+    const [daloader, setDaloader] = useState(false);
+    const [dloader, setDloader] = useState(false);
 
     const [getComments, setGetComments] = useState();
 
@@ -18,6 +21,7 @@ const AssData = (props) => {
     });
 
     const [err, setErr] = useState("");
+    const [success, setSuccess] = useState("");
 
     const { assInfo } = props;
 
@@ -86,6 +90,128 @@ const AssData = (props) => {
 
     }
 
+    const removeIdFromMessage = (message) => {
+
+        var str = message;
+        var strArr = str.split(":");
+
+        return strArr[1];
+    }
+
+
+    const removeDateParts = (date) => {
+
+        var str = date;
+        var strArr = str.split("T");
+
+        return strArr[0];
+    }
+
+
+    const cacApproval = () => {
+        setCaloader(true);
+
+        const regUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/form41/status/update/';
+
+        const fdata = new FormData();
+        fdata.append('status', "1");
+        fdata.append('id', formID);
+
+        const requestOptions = {
+            headers: { 'Content-Type': 'application/json' }
+        };
+
+        axios
+            .post(regUrl, fdata, requestOptions)
+            .then( res => {
+                //console.log(res.data);
+                if(res.data.result === 1)
+                {
+                    setSuccess("Form Approved for temporary License!");
+                    setCaloader(false);
+                }
+                else{
+                    setErr("Form could not be approved! Try again");
+                    setCaloader(false);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                setErr("Form could not be approved! Try again");
+                setCaloader(false);
+            });
+    }
+
+
+    const dcgApproval = () => {
+        setCaloader(true);
+
+        const regUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/form41/status/update/';
+
+        const fdata = new FormData();
+        fdata.append('status', "2");
+        fdata.append('id', formID);
+
+        const requestOptions = {
+            headers: { 'Content-Type': 'application/json' }
+        };
+
+        axios
+            .post(regUrl, fdata, requestOptions)
+            .then( res => {
+                //console.log(res.data);
+                if(res.data.result === 1)
+                {
+                    setSuccess("Form Approved for full License!");
+                    setDaloader(false);
+                }
+                else{
+                    setErr("Form could not be approved! Try again");
+                    setDaloader(false);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                setErr("Form could not be approved! Try again");
+                setDaloader(false);
+            });
+    }
+
+
+    const decline = () => {
+        setDloader(true);
+
+        const regUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/form41/status/update/';
+
+        const fdata = new FormData();
+        fdata.append('status', "3");
+        fdata.append('id', formID);
+
+        const requestOptions = {
+            headers: { 'Content-Type': 'application/json' }
+        };
+
+        axios
+            .post(regUrl, fdata, requestOptions)
+            .then( res => {
+                //console.log(res.data);
+                if(res.data.result === 1)
+                {
+                    setSuccess("Application Declined!");
+                    setDloader(false);
+                }
+                else{
+                    setErr("Application could not be declines! Try again");
+                    setDloader(false);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+                setErr("Application could not be declines! Try again");
+                setDloader(false);
+            });
+    }
+
 
     let commentList;
 
@@ -110,7 +236,7 @@ const AssData = (props) => {
                 <div className="row my-3">
                     <div className="col-md-3">Date</div>
                     <div className="col-md-9">
-                        {item.message_date}
+                        {removeDateParts(item.message_date)}
                     </div>
                 </div>
             </div>
@@ -120,6 +246,9 @@ const AssData = (props) => {
     return(
         <div>
             <div className="row">
+                <div className="col-md-12">
+                    {userData.profiletype === "INSPECTOR" && <Link to="/ins-assignments" className="btn btn-dark float-right my-3">Assignments</Link>}
+                </div>
                 <div className="col-md-6">
                     <div className="row p-3 border-bottom">
                         <div className="col-md-4">EXCISE TRADER</div>
@@ -142,24 +271,24 @@ const AssData = (props) => {
                         <div className="col-md-8">{assInfo[0].OCO_USER_DETAILS ? assInfo[0].OCO_USER_DETAILS[0].FIRSTNAME+" "+assInfo[0].OCO_USER_DETAILS[0].LASTNAME +" ("+assInfo[0].OCO_USER_DETAILS[0].PROFILETYPE+")" : ""}</div>
                     </div>
                     <div className="row p-3 border-bottom">
-                        <div className="col-md-4">FORM ID</div>
+                        <div className="col-md-4">FORM DETAIL</div>
                         <div className="col-md-8">
-                            <Link to={`/myform-detail/${formID}`} className="btn btn-dark">
-                                CLICK TO VIEW FORM
+                            <Link to={`/myform-detail/${formID}`} className="site-btn btn-primary border-primary">
+                                <i className="fa fa-search mr-2"></i> view form detail
                             </Link>
                         </div>
                     </div>
                     <div className="row p-3 border-bottom">
                         <div className="col-md-4">MESSAGE</div>
-                        <div className="col-md-8">{assInfo[0].MESSAGE}</div>
+                        <div className="col-md-8">{removeIdFromMessage(assInfo[0].MESSAGE)}</div>
                     </div>
                     <div className="row p-3 border-bottom">
                         <div className="col-md-4">DATE ASSIGNED</div>
-                        <div className="col-md-8">{assInfo[0].ASSIGNMENT_DATE}</div>
+                        <div className="col-md-8">{removeDateParts(assInfo[0].ASSIGNMENT_DATE)}</div>
                     </div>
                     <div className="row p-3 border-bottom">
                         <div className="col-md-4">EXPIRY DATE</div>
-                        <div className="col-md-8">{assInfo[0].EXPIRY_DATE}</div>
+                        <div className="col-md-8">{removeDateParts(assInfo[0].EXPIRY_DATE)}</div>
                     </div>
                 </div>
                 <div className="col-md-6 border-left">
@@ -189,6 +318,30 @@ const AssData = (props) => {
                         <div className="col-md-12 p-3 mb-5 border-bottom"></div>
                             <h4 className="text text-success p-3  border-bottom mb-3">Comments</h4>
                             {commentList}
+                            <p className="p-3 my-3">
+                                <span className="text text-success">{success}</span>
+                                <span className="text text-danger">{err}</span>
+                            </p>
+                            {userData.profiletype === "CAC" && <div>
+                                    {caloader ? <Spinner /> : <button className="site-btn btn-success btn-block border-success mt-3" onClick={cacApproval}>
+                                        Approve for Temporary License
+                                    </button>}
+                                    {dloader ? <Spinner /> : <button className="site-btn btn-danger btn-block border-danger mt-3" onClick={decline}>
+                                        Decline Application
+                                    </button>}
+                                    
+                                </div> 
+                            }
+
+                            {userData.profiletype === "DCG" && <div>
+                                    {daloader ? <Spinner /> : <button className="site-btn btn-success btn-block border-success mt-3" onClick={dcgApproval}>
+                                        Approve for License
+                                    </button>}
+                                    {dloader ? <Spinner /> : <button className="site-btn btn-danger btn-block border-danger mt-3" onClick={decline}>
+                                        Decline Application
+                                    </button>}
+                                    
+                                </div>  }
                 </div>
             </div>
         </div>

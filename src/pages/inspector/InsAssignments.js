@@ -23,6 +23,23 @@ const InsAssignments = () => {
 
     console.log(assignments);
 
+
+    const removeIdFromMessage = (message) => {
+
+        var str = message;
+        var strArr = str.split(":");
+
+        return strArr[1];
+    }
+
+    const removeDateParts = (date) => {
+
+        var str = date;
+        var strArr = str.split("T");
+
+        return strArr[0];
+    }
+
     let allocations;
 
     if(assignments === undefined || assignments.length === 0){
@@ -33,9 +50,9 @@ const InsAssignments = () => {
             <tr key={item.ALLOCATIONID} >
                 <td>{item.TRADER_USER_DETAILS ? item.TRADER_USER_DETAILS[0].FIRSTNAME + " "+item.TRADER_USER_DETAILS[0].LASTNAME+" ("+item.TRADER_USER_DETAILS[0].USERID+")" : ""}</td>
                 <td>{item.OCO_USER_DETAILS ? item.OCO_USER_DETAILS[0].FIRSTNAME + " "+item.OCO_USER_DETAILS[0].LASTNAME+" ("+item.OCO_USER_DETAILS[0].USERID+")" : ""}</td>
-                <td>{item.MESSAGE}</td>
-                <td>{item.ASSIGNMENT_DATE}</td>
-                <td>{item.EXPIRY_DATE}</td>
+                <td>{removeIdFromMessage(item.MESSAGE)}</td>
+                <td>{removeDateParts(item.ASSIGNMENT_DATE)}</td>
+                <td>{removeDateParts(item.EXPIRY_DATE)}</td>
                 <td><Link className="btn btn-link text-info" to={`/alloc-detail/${item.ALLOCATIONID}`}><i className="fa fa-search"></i></Link></td>
             </tr>
         ))

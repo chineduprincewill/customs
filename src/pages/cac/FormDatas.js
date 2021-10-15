@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { withRouter } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import axios from 'axios';
 
 import Spinner from '../../layout/Spinner';
@@ -53,6 +53,15 @@ const FormDatas = (props) => {
         })
         
     };
+
+
+    const removeDateParts = (date) => {
+
+        var str = date;
+        var strArr = str.split("T");
+
+        return strArr[0];
+    }
 
     const onSubmit = (e) => {
         e.preventDefault();
@@ -110,6 +119,10 @@ const FormDatas = (props) => {
 
     return(
         <div className="row">
+             <div className="col-md-12">
+                {userData.profiletype === "CAC" && <Link to="/form41-list" className="btn btn-primary mb-5 float-right"><i className="fa fa-arrow-right"></i> Forms List</Link>} 
+                {userData.profiletype === "CAC" && <Link to={`/myform-detail/${formInfo[0].IDFORM}`} className="btn btn-dark mr-3 mb-5 float-right"><i className="fa fa-arrow-left"></i> Detail</Link>} 
+            </div>
             <div className="col-md-7">
                 <div className="row p-3 border-bottom">
                     <div className="col-md-5">USER ID</div>
@@ -128,11 +141,11 @@ const FormDatas = (props) => {
                     <div className="col-md-7">{formInfo[0].REGISTEREDADDRESS}</div>
                 </div>
                 <div className="row p-3 border-bottom">
-                    <div className="col-md-5">DESCRIPTIONOFBUSINESS</div>
+                    <div className="col-md-5">DESCRIPTION OF BUSINESS</div>
                     <div className="col-md-7">{formInfo[0].DESCRIPTIONOFBUSINESS}</div>
                 </div>
                 <div className="row p-3 border-bottom">
-                    <div className="col-md-5">PURPOSEOFBUSINESS</div>
+                    <div className="col-md-5">PURPOSE OF BUSINESS</div>
                     <div className="col-md-7">{formInfo[0].PURPOSEOFBUSINESS}</div>
                 </div>
                 <div className="row p-3 border-bottom">
@@ -149,7 +162,7 @@ const FormDatas = (props) => {
                 </div>
                 <div className="row p-3 border-bottom">
                     <div className="col-md-5">EXPECTED COMPLETION DATE</div>
-                    <div className="col-md-7">{formInfo[0].EXPECTED_COMPLETION_DATE}</div>
+                    <div className="col-md-7">{removeDateParts(formInfo[0].EXPECTED_COMPLETION_DATE)}</div>
                 </div>
                 <div className="row p-3 border-bottom">
                     <div className="col-md-5">BRAND NAMES</div>

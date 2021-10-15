@@ -22,7 +22,6 @@ const Cac = (props) => {
                     <li><Link class="text text-dark" to="/commands">Commands</Link></li>
                     <li><Link class="text text-dark" to="/users">Users</Link></li>
                     <li><Link class="text text-dark" to="/ins-assignments">Applications</Link></li>
-                    <li><Link class="text text-dark" to="/license">License</Link></li>
                 </ul>
             </nav>
         </div>

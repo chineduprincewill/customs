@@ -12,7 +12,7 @@ const AddUserinfo = (props) => {
         purposeOfBusiness: "",
         rcNumber: "",
         tinNumber: "",
-        isAdmin: "0",
+        isAdmin: 0,
         userId: props.id,
         location: "",
         phoneNumber: ""
@@ -39,6 +39,17 @@ const AddUserinfo = (props) => {
         setLoader(true);
 
         console.log(businessInfo);
+        console.log(businessInfo.companyName);
+        console.log(businessInfo.descriptionOfBusiness);
+        console.log(businessInfo.purposeOfBusiness);
+        console.log(businessInfo.rcNumber);
+        console.log(businessInfo.tinNumber);
+        console.log(businessInfo.isAdmin);
+        console.log(businessInfo.userId);
+        console.log(businessInfo.location);
+        console.log(businessInfo.phoneNumber);
+
+        
 
         const bizUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/userinfo/';
 
@@ -57,13 +68,13 @@ const AddUserinfo = (props) => {
             headers: { 'Content-Type': 'application/json' }
         };
 
-        console.log(fdata);
-        console.log(JSON.stringify(fdata))
+        console.log(...fdata);
+        //console.log(JSON.stringify(fdata))
 
         axios
             .post(bizUrl, fdata, requestOptions)
             .then( res => {
-                //console.log(res.data);
+                console.log(res.data);
                 if(res.data.result === 1)
                 {
                     setSuccess("Business Information Successfully Added!");

@@ -34,6 +34,7 @@ import AllocDetail from './pages/cac/AllocDetail';
 import InsAssignments from './pages/inspector/InsAssignments';
 import Pay from './pages/customer/Pay';
 import License from './pages/dcg/License';
+import ProvisionalLicense from './pages/cac/ProvisionalLicense';
 
 function App(props) {
 
@@ -57,6 +58,8 @@ function App(props) {
             <PrivateRoute exact path="/myforms" component={MyForms} />
             <PrivateRoute exact path="/myform-detail/:id" component={MyformDetail} />
             <PrivateRoute exact path="/pay" component={Pay} />
+            <PrivateRoute exact path="/license/:id" component={License} />
+            <PrivateRoute exact path="/pr-license/:id" component={ProvisionalLicense} />
             <DcgRoute exact path="/users" component={Users} />
             <DcgRoute exact path="/user-detail/:id" component={UserDetail} />
             <DcgRoute exact path="/new-user" component={NewUser} />
@@ -65,7 +68,6 @@ function App(props) {
             <DcgRoute exact path="/commands" component={Commands} />
             <DcgRoute exact path="/new-command" component={NewCommand} />
             <DcgRoute exact path="/applications" component={Applications} />
-            <DcgRoute exact path="/license" component={License} />
             <CacRoute exact path="/form41-list" component={Form41List} />
             <CacRoute exact path="/form41-detail/:id" component={Form41Detail} />
             <CacRoute exact path="/assignments" component={Assignments} />

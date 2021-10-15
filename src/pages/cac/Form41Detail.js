@@ -53,11 +53,7 @@ const Form41Detail = () => {
             </section>
             <section className="contact-page spad">
                 <div className="container">   
-                    <div className="row pb-3 mb-3">
-                        <div className="col-md-12">
-                            <Link to="/ins-assignments" className="btn btn-dark float-right"><i className="fa fa-arrow-right"></i> Back</Link>
-                        </div>
-                    </div>
+                   
                     {formInformation}
                 </div>
             </section>

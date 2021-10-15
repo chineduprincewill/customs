@@ -80,8 +80,8 @@ const UploadDocuments = (props) => {
                                     onChange={onChange}
                                 >
                                     <option value="">Select document title</option>
-                                    <option value="CAC">CAC</option>
-                                    <option value="TCC">TCC</option>
+                                    <option value="Corporate Affairs Certificate">Corporate Affairs Certificate</option>
+                                    <option value="Tax Clearance Certificate">Tax Clearance Certificate</option>
                                     <option value="State Approval">State Approval</option>
                                     <option value="Architectural Design">Architectural Design</option>
                                 </select>
@@ -113,12 +113,14 @@ const UploadDocuments = (props) => {
 
             {selectedStatus && <ProgressBar file={document} filename={documentTitle} formid={props.formid} setSelectedStatus={setSelectedStatus} setLoader={setLoader} />}
             
-            <div className="row p-3 mt-3">
-                {docs ? docs.map(doc => (
-                <div className="col-md-5 m-3 border-primary p-3" style={{ backgroundColor: "#eeeeee" }} key={doc.id}>
-                    <Link to={{ pathname: `${doc.url}`}} target="_blank" className="text text center">{doc.filename.title}</Link> 
-                </div>
-            )) : <div className="alert alert-warning p-3">No document uploaded yet!</div>}
+            <div className="row mt-3">
+                {docs && docs.map(doc => (
+                    <div className="col-md-5 m-3 border-primary p-3" style={{ backgroundColor: "#eeeeee" }} key={doc.id}>
+                        <Link to={{ pathname: `${doc.url}`}} target="_blank" className="text text center">{doc.filename.title}</Link> 
+                    </div>
+                ))}
+
+                {docs.length === 0 && <div className="alert alert-warning mx-4">No document uploaded yet!</div>}
         </div>
     </div>
     )

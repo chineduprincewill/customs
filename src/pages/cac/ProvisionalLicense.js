@@ -5,7 +5,7 @@ import axios from 'axios';
 import logo from '../../img/logo2.png';
 import Spinner from '../../layout/Spinner';
 
-const License = () => {
+const ProvisionalLicense = () => {
 
     const userData = JSON.parse(localStorage.getItem("userData"));
 
@@ -46,19 +46,18 @@ const License = () => {
     }
     else{
 
-        licenseInformation =    
+        licenseInformation =  
         <div className="row" id="print-div">
             <div  style={{ width : "100%" , marginBottom : "20px", textAlign : "center", marginTop : "30px" }}>
-                <img src={logo} alt="logo" className="p-3" />
-                <p>This is to certify that the Company <strong>{formDetail[0].CNAME}</strong> is licensed to operate as an Excise Trader in the Federal Republic of Nigeria</p>
-                <p>With <b>Excise Factory Number (EFN)</b></p>
-                <h2>EFN-{formDetail[0].IDFORM}{formDetail[0].FORMREF}</h2>
+                <img src={logo} className="p-3" alt="logo" />
+                <h3 style={{ color: "#47494c", marginBottom : "10px" }}><strong>PROVISIONAL LICENSE</strong></h3>
+                <p>This is to certify that the Company <strong>{formDetail[0].CNAME}</strong> is licensed to commence the construction of it's facility</p>
+                <p>With <b>Provisional License Number</b></p>
+                <h2>PLN-{formDetail[0].IDFORM}{formDetail[0].FORMREF}</h2>
                 <p>On this day, <strong>{date}</strong></p>
             </div>
             <div className="col-md-8"></div>
             <div className="col-md-4">
-                <p style={{ textAlign : "right", marginTop : "30px" }}><strong>Signed: ..............................................</strong></p>
-                <p style={{ textAlign : "right" }}><strong>Deputy Controller General (DCG)</strong></p>
                 <p style={{ textAlign : "right", marginTop : "30px" }}><strong>Signed: ..............................................</strong></p>
                 <p style={{ textAlign : "right" }}><strong>Customs Area Controller (CAC)</strong></p>
             </div>
@@ -70,7 +69,7 @@ const License = () => {
         <div>
             <section className="page-info-section">
                 <div className="container">
-                    <h2>License</h2>
+                    <h2>Provisional License</h2>
                     <div className="site-beradcamb">
                         <Link to="/dashboard"><i className="fa fa-dashboard"></i></Link>
                         <span><i className="fa fa-angle-right mx-3"></i>Welcome {`${userData.firstname} ${userData.lastname}`} !</span>
@@ -89,4 +88,4 @@ const License = () => {
     )
 }
 
-export default License;
+export default ProvisionalLicense;

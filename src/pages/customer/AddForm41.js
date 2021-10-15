@@ -9,7 +9,6 @@ const AddForm41 = (props) => {
 
     const [entrytype, setEntrytype] = useState([]);
     const [category, setCategory] = useState([]);
-    const [status, setStatus] = useState([]);
     const [loader, setLoader] = useState(false);
 
     const [success, setSuccess] = useState("");
@@ -23,7 +22,7 @@ const AddForm41 = (props) => {
         state: "",
         descriptionofbusiness: props.info.descriptionofbusiness,
         purposeofbusiness: props.info.purposeofbusiness,
-        status: "",
+        status: 0,
         comments: "",
         entrytypeid: "",
         building_estimate: "",
@@ -67,13 +66,6 @@ const AddForm41 = (props) => {
               })
             .catch( err => console.log(err))
 
-        const statUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/config/form41status/';
-
-        axios.get(statUrl)
-            .then( res => {
-                setStatus(res.data.items);
-            })
-            .catch( err => console.log(err))
     }, [])
 
     //console.log(entrytype);
@@ -268,19 +260,6 @@ const AddForm41 = (props) => {
                                 value={props.info.purposeofbusiness}
                             >
                             </textarea>
-                            <span><i className="ti-check"></i></span>
-                        </div>
-                        <div className="form-group">
-                            <select 
-                                name="status"
-                                className="form-control border-0 pl-0"
-                                onChange={onChange}
-                            >
-                                <option value="">Select Status</option>
-                                { status.map(stat => (
-                                    <option key={stat.statusid} value={stat.statusid}>{stat.statusname}</option>
-                                ))}
-                            </select>
                             <span><i className="ti-check"></i></span>
                         </div>
                         <div className="form-group">

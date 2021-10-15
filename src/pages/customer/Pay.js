@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, withRouter } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import homeImage from '../../img/home-banner.png';
 import Spinner from '../../layout/Spinner';
