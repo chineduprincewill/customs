@@ -14,14 +14,14 @@ const Form41List = () => {
 
     useEffect(() => {
 
-        const apiUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/form41/';
+        const apiUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/form41/command/'+userData.commandid;
 
         axios.get(apiUrl)
           .then( res => {
                 setFormList(res.data.items);
             })
           .catch( err => console.log(err))
-    }, []);
+    }, [userData.commandid]);
 
 
     let formListing;
@@ -37,6 +37,12 @@ const Form41List = () => {
                 <td>{item.CNAME}</td>
                 <td>{item.COMMAND ? item.COMMAND[0].COMMANDNAME : "..."}</td>
                 <td>{item.PRODUCTCATEGORY ? item.PRODUCTCATEGORY[0].TARIFF_DESCRIPTION : "..."}</td>
+                <td>
+                    {item.STATUS === 0 && <span className="text text-warning">Processing ... </span>}
+                    {item.STATUS === 1 && <span className="text text-primary">Provisional License issued</span>}
+                    {item.STATUS === 2 && <span className="text text-success">License issued</span>}
+                    {item.STATUS === 3 && <span className="text text-danger">Declined</span>}
+                </td>
                 <td>
                     <Link className="btn btn-link text-primary" to={`myform-detail/${item.IDFORM}`}><i className="fa fa-search"></i></Link>
                 </td>
@@ -69,6 +75,7 @@ const Form41List = () => {
                                 <td>COMPANY NAME</td>
                                 <td>COMMAND</td>
                                 <td>PRODUCT CATEGORY</td>
+                                <td>STATUS</td>
                                 <td>...</td>
                             </tr>
                         </thead>

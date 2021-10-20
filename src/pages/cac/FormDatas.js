@@ -44,6 +44,7 @@ const FormDatas = (props) => {
           .catch( err => console.log(err))
     }, [])
 
+    console.log(commandAcc);
 
     const onChange = (e) => {
 
@@ -251,7 +252,10 @@ const FormDatas = (props) => {
                                 >
                                     <option value="">SELECT OFFICER FOR INSPECTION</option>
                                     { commandAcc.map(cmd => (
-                                        <option key={cmd.userid} value={cmd.userid}>{cmd.firstname} {cmd.lastname} ( {cmd.profiletype} )</option>
+                                        cmd.profiletype === "DCG" && <option key={cmd.userid} value={cmd.userid}>{cmd.firstname} {cmd.lastname} ( {cmd.profiletype} )</option>                                        
+                                    ))}
+                                    { commandAcc.map(cmd => (
+                                        cmd.commandid === userData.commandid && <option key={cmd.userid} value={cmd.userid}>{cmd.firstname} {cmd.lastname} ( {cmd.profiletype} )</option>                                        
                                     ))}
                                 </select>
                                 <span><i className="ti-check"></i></span>

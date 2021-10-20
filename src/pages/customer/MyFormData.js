@@ -27,6 +27,7 @@ const MyFormData = (props) => {
                 {userData.profiletype === "CAC" && <Link to="/assignments" className="btn btn-success ml-3 float-right"> Assignments</Link>}
                 {userData.profiletype === "CAC" && <Link to={`/form41-detail/${formInfo[0].IDFORM}`} className="btn btn-dark float-right"> Assign to officer</Link>}
                 {userData.profiletype === "INSPECTOR" && <Link to="/ins-assignments" className="btn btn-dark float-right"> Assignments</Link>}
+                {userData.profiletype === "DCG" && <Link to="/ins-assignments" className="btn btn-dark float-right"><i className="fa fa-arrow-right"></i> Assignments</Link>}
             </div>
             <div className="col-md-6">
             <div className="row p-3 border-bottom">

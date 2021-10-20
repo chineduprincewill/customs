@@ -19,7 +19,6 @@ const Customer = (props) => {
                 <ul className="menu-list">
                     <li><button className="btn btn-warning mr-5">{props.role}</button></li>
                     <li><Link className="text text-dark" to="/profile">Profile</Link></li>
-                    <li><Link className="text text-dark" to="/messages">Messages</Link></li>
                     <li><Link className="text text-dark" to="/myforms">Form 41</Link></li>
                 </ul>
             </nav>

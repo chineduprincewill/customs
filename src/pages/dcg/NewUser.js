@@ -212,6 +212,7 @@ const NewUser = (props) => {
                                                 <option value="DCGT">DCGT</option>
                                                 <option value="DCG">DCG</option>
                                                 <option value="INSPECTOR">INSPECTOR</option>
+                                                <option value="Admin">Admin</option>
                                             </select>
                                             <span><i className="ti-check"></i></span>
                                         </div>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import logo from '../../img/logo2.png';
 
-const Cac = (props) => {
+const Dcg = (props) => {
 
     const signOut = props.logout;
 
@@ -22,10 +22,12 @@ const Cac = (props) => {
                     <li><Link class="text text-dark" to="/commands">Commands</Link></li>
                     <li><Link class="text text-dark" to="/users">Users</Link></li>
                     <li><Link class="text text-dark" to="/ins-assignments">Applications</Link></li>
+                    <li><Link class="text text-dark" to="/form41-report">Form41 Report</Link></li>
+                    <li><Link class="text text-dark" to="/license-list">License List</Link></li>
                 </ul>
             </nav>
         </div>
     )
 }
 
-export default Cac;
+export default Dcg;

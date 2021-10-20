@@ -62,7 +62,7 @@ const InsAssignments = () => {
         <div>
             <section className="page-info-section">
                 <div className="container">
-                    <h2>Inspection Assignments</h2>
+                    <h2> Assignments</h2>
                     <div className="site-beradcamb">
                         <Link to="/dashboard"><i className="fa fa-dashboard"></i></Link>
                         <span><i className="fa fa-angle-right mx-3"></i>Welcome {`${userData.firstname} ${userData.lastname}`} !</span>

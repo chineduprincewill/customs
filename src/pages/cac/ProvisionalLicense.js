@@ -3,32 +3,29 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 import logo from '../../img/logo2.png';
+import sign2 from '../../img/sing-2.png';
 import Spinner from '../../layout/Spinner';
 
 const ProvisionalLicense = () => {
 
     const userData = JSON.parse(localStorage.getItem("userData"));
 
-    var today = new Date(),
-    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
-
-
     const { id } = useParams();
 
-    const [formDetail, setFormDetail] = useState([]);
+    const [licenseDetail, setLicenseDetail] = useState([]);
 
     useEffect(() => {
 
-        const apiUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/form41/'+id;
+        const apiUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/license/form/'+id;
 
         axios.get(apiUrl)
           .then( res => {
-                setFormDetail(res.data.items);
+                setLicenseDetail(res.data.items);
             })
           .catch( err => console.log(err))
     }, [id])
 
-    console.log(formDetail);
+    console.log(licenseDetail);
 
     const printDiv = () => {
         var divContents = document.getElementById("print-div").innerHTML;
@@ -38,9 +35,19 @@ const ProvisionalLicense = () => {
         a.print();
     }
 
+
+    const removeDateParts = (date) => {
+
+        var str = date;
+        var strArr = str.split("T");
+
+        return strArr[0];
+    }
+
+
     let licenseInformation;
 
-    if(formDetail === undefined || formDetail.length === 0 )
+    if(licenseDetail === undefined || licenseDetail.length === 0 )
     {
         licenseInformation = <Spinner />
     }
@@ -51,14 +58,14 @@ const ProvisionalLicense = () => {
             <div  style={{ width : "100%" , marginBottom : "20px", textAlign : "center", marginTop : "30px" }}>
                 <img src={logo} className="p-3" alt="logo" />
                 <h3 style={{ color: "#47494c", marginBottom : "10px" }}><strong>PROVISIONAL LICENSE</strong></h3>
-                <p>This is to certify that the Company <strong>{formDetail[0].CNAME}</strong> is licensed to commence the construction of it's facility</p>
+                <p>This is to certify that the Company <strong>{licenseDetail[0].FORM41 && licenseDetail[0].FORM41[0].CNAME}</strong> is licensed to commence the construction of it's facility</p>
                 <p>With <b>Provisional License Number</b></p>
-                <h2>PLN-{formDetail[0].IDFORM}{formDetail[0].FORMREF}</h2>
-                <p>On this day, <strong>{date}</strong></p>
+                <h2>{licenseDetail[0].EXCISE_NUMBER}</h2>
+                <p>On this day, <strong>{removeDateParts(licenseDetail[0].ISSUEDATE)}</strong></p>
             </div>
             <div className="col-md-8"></div>
             <div className="col-md-4">
-                <p style={{ textAlign : "right", marginTop : "30px" }}><strong>Signed: ..............................................</strong></p>
+                <p style={{ textAlign : "right", marginTop : "30px" }}><strong>Signed: <img src={sign2} style={{ width : "150px "}} alt="signature" /></strong></p>
                 <p style={{ textAlign : "right" }}><strong>Customs Area Controller (CAC)</strong></p>
             </div>
         </div>

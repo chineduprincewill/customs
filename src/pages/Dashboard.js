@@ -18,7 +18,7 @@ const Dashboard = (props) => {
     else if(userData.profiletype === 'CAC'){
         dashview = <Cac />
     }
-    else if(userData.profiletype === 'DCG'){
+    else if(userData.profiletype === 'DCG' || userData.profiletype === 'Admin'){
         dashview = <Dcg />
     }
     else if(userData.profiletype === 'INSPECTOR'){

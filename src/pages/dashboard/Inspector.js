@@ -7,10 +7,15 @@ const Inspector = () => {
         <section className="contact-page spad">
             <div className="container">
                 <div className="row">
+
                     <div className="col-lg-6">
-                        <h3 className="text text-success">My Assignments</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eveniet dignissimos perspiciatis distinctio a et ipsam, explicabo adipisci placeat obcaecati porro maiores? Facilis doloremque quisquam consequatur at dolor porro omnis similique.</p>
-                        <Link to="/ins-assignments" className="btn btn-dark"><i className="fa fa-search"></i> view your assignments</Link>
+                        <div className="card">
+                            <div className="card-body">
+                                <h5 className="card-title text-success">My Assignments</h5>
+                                <h1 className="card-text text-dark text-center mb-3"><i className="fa fa-tasks mr-3"></i> </h1>
+                                <Link to="/ins-assignments" className="btn btn-dark btn-block"><i className="fa fa-search"></i></Link>
+                            </div>
+                        </div>
                     </div>
                     
                 </div>

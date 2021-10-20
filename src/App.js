@@ -35,6 +35,8 @@ import InsAssignments from './pages/inspector/InsAssignments';
 import Pay from './pages/customer/Pay';
 import License from './pages/dcg/License';
 import ProvisionalLicense from './pages/cac/ProvisionalLicense';
+import Form41Report from './pages/dcg/Form41Report';
+import LicenseList from './pages/dcg/LicenseList';
 
 function App(props) {
 
@@ -68,6 +70,8 @@ function App(props) {
             <DcgRoute exact path="/commands" component={Commands} />
             <DcgRoute exact path="/new-command" component={NewCommand} />
             <DcgRoute exact path="/applications" component={Applications} />
+            <DcgRoute exact path="/form41-report" component={Form41Report} />
+            <DcgRoute exact path="/license-list" component={LicenseList} />
             <CacRoute exact path="/form41-list" component={Form41List} />
             <CacRoute exact path="/form41-detail/:id" component={Form41Detail} />
             <CacRoute exact path="/assignments" component={Assignments} />

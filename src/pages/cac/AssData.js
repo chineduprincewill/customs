@@ -16,6 +16,10 @@ const AssData = (props) => {
 
     const [getComments, setGetComments] = useState();
 
+    const [formInfo, setFormInfo] = useState();
+
+    const [appStatus, setAppStatus] = useState();
+
     const [comment, setComment] = useState({
         message: ""
     });
@@ -38,7 +42,19 @@ const AssData = (props) => {
                 setGetComments(res.data.items);
             })
           .catch( err => console.log(err))
+        
+        // get form41 information 
+        const formUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/form41/'+formID;
+
+        axios.get(formUrl)
+        .then( res => {
+                setAppStatus(res.data.items[0].STATUS);
+            })
+        .catch( err => console.log(err))
+
     }, [formID])
+
+    console.log(appStatus);
 
     const onChange = (e) => {
 
@@ -99,6 +115,44 @@ const AssData = (props) => {
     }
 
 
+    const saveLicense = (formid, approvedBy, formStatus, comment, ExciseNumber) => {
+
+        var today = new Date(),
+        date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
+        var expiry = new Date(),
+        expiryDate = expiry.getFullYear() + '-12-31';
+
+        const licenseUrl = 'https://gpxdbpncn8rxww6-businessserv.adb.uk-london-1.oraclecloudapps.com/ords/nigeriacustom/system/license/';
+
+        const fdata = new FormData();
+        fdata.append('idForm', formid);
+        fdata.append('IssueDate', date);
+        fdata.append('ExpiryDate', expiryDate);
+        fdata.append('ApprovedBy', approvedBy);
+        fdata.append('Status', formStatus);
+        fdata.append('Comments', comment);
+        fdata.append('exciseNumber', ExciseNumber);
+
+        const requestOptions = {
+            headers: { 'Content-Type': 'application/json' }
+        };
+
+        axios
+            .post(licenseUrl, fdata, requestOptions)
+            .then( res => {
+                //console.log(res.data);
+                if(res.data.result === 1)
+                {
+                    console.log(res.data.result);
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            });
+    }
+
+
     const removeDateParts = (date) => {
 
         var str = date;
@@ -127,7 +181,10 @@ const AssData = (props) => {
                 //console.log(res.data);
                 if(res.data.result === 1)
                 {
+                    const num = Math.floor((Math.random() * 100000) + 1);
+                    const exciseNumber = `PLN-${formID}-${num}`;
                     setSuccess("Form Approved for temporary License!");
+                    saveLicense(formID, userData.userid, 1, "Provisional License issued to Excise Trader", exciseNumber);
                     setCaloader(false);
                 }
                 else{
@@ -162,7 +219,10 @@ const AssData = (props) => {
                 //console.log(res.data);
                 if(res.data.result === 1)
                 {
-                    setSuccess("Form Approved for full License!");
+                    const num = Math.floor((Math.random() * 100000) + 1);
+                    const exciseNumber = `EFN-${formID}-${num}`;
+                    setSuccess("Form Approved for temporary License!");
+                    saveLicense(formID, userData.userid, 2, "License issued to Excise Trader", exciseNumber);
                     setDaloader(false);
                 }
                 else{
@@ -251,6 +311,15 @@ const AssData = (props) => {
                 </div>
                 <div className="col-md-6">
                     <div className="row p-3 border-bottom">
+                        <div className="col-md-4">FORM STATUS</div>
+                        <div className="col-md-8">
+                            {appStatus === 0 && <span className="text text-primary">Processing ...</span>}
+                            {appStatus === 1 && <span className="text text-info">Provisional License</span>}
+                            {appStatus === 2 && <span className="text text-success">Licensed</span>}
+                            {appStatus === 3 && <span className="text text-danger">Declined!</span>}
+                        </div>
+                    </div>
+                    <div className="row p-3 border-bottom">
                         <div className="col-md-4">EXCISE TRADER</div>
                         <div className="col-md-8">{assInfo[0].TRADER_USER_DETAILS ? assInfo[0].TRADER_USER_DETAILS[0].FIRSTNAME+" "+assInfo[0].TRADER_USER_DETAILS[0].LASTNAME : ""}</div>
                     </div>
@@ -322,7 +391,8 @@ const AssData = (props) => {
                                 <span className="text text-success">{success}</span>
                                 <span className="text text-danger">{err}</span>
                             </p>
-                            {userData.profiletype === "CAC" && <div>
+                            
+                            {userData.profiletype === "CAC" && appStatus === 0 ? <div>
                                     {caloader ? <Spinner /> : <button className="site-btn btn-success btn-block border-success mt-3" onClick={cacApproval}>
                                         Approve for Temporary License
                                     </button>}
@@ -330,10 +400,10 @@ const AssData = (props) => {
                                         Decline Application
                                     </button>}
                                     
-                                </div> 
+                                </div> : ""
                             }
 
-                            {userData.profiletype === "DCG" && <div>
+                            {userData.profiletype === "DCG" && appStatus === 1 ? <div>
                                     {daloader ? <Spinner /> : <button className="site-btn btn-success btn-block border-success mt-3" onClick={dcgApproval}>
                                         Approve for License
                                     </button>}
@@ -341,7 +411,8 @@ const AssData = (props) => {
                                         Decline Application
                                     </button>}
                                     
-                                </div>  }
+                                </div> : ""
+                            }
                 </div>
             </div>
         </div>

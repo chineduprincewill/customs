@@ -23,7 +23,7 @@ const Users = (props) => {
 
     let users;
 
-    if(usersList === undefined || usersList.length === 0 || userData.profiletype !== 'DCG'){
+    if(usersList === undefined || usersList.length === 0){
         users = <Spinner />
     }
     else{

@@ -4,7 +4,7 @@ import { Route, Redirect } from 'react-router-dom';
 const CacRoute = ({ component: Component, ...rest }) => {
 
     //const { authTokens } = useAuth();
-    const user = localStorage.getItem('userData');
+    const user = JSON.parse(localStorage.getItem("userData"));
 
   return (
     <Route 
