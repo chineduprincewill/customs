@@ -75,7 +75,7 @@ function App(props) {
             <CacRoute exact path="/form41-list" component={Form41List} />
             <CacRoute exact path="/form41-detail/:id" component={Form41Detail} />
             <CacRoute exact path="/assignments" component={Assignments} />
-            <CacRoute exact path="/alloc-detail/:id" component={AllocDetail} />
+            <PrivateRoute exact path="/alloc-detail/:id" component={AllocDetail} />
             <PrivateRoute exact path="/ins-assignments" component={InsAssignments} />
           </Switch>
         </div>   
