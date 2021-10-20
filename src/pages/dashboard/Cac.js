@@ -32,6 +32,7 @@ const Cac = () => {
            if(item.STATUS === 1 && item.COMMAND[0].COMMANDID === userData.commandid){
                 processingCount += 1;
            } 
+           return processingCount;
         })
     }
 

@@ -16,8 +16,6 @@ const AssData = (props) => {
 
     const [getComments, setGetComments] = useState();
 
-    const [formInfo, setFormInfo] = useState();
-
     const [appStatus, setAppStatus] = useState();
 
     const [comment, setComment] = useState({

@@ -112,6 +112,7 @@ const Dcg = () => {
            if(item.STATUS === 1){
                 pendingApproval += 1;
            } 
+           return pendingApproval;
         })
     }
 

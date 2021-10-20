@@ -10,7 +10,7 @@ const CacRoute = ({ component: Component, ...rest }) => {
     <Route 
         {...rest}
         render = {props =>
-            user && user !== 'undefined' && user.profiletype !== 'CAC' ?
+            user && user !== 'undefined' && user.profiletype === 'CAC' ?
             (<Component {...props} />)
             :
             (<Redirect to="/" />)
