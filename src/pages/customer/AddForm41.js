@@ -156,7 +156,7 @@ const AddForm41 = (props) => {
 
     return(
         <div>  
-            <h3 className="text text-primary border-bottom py-2">Form 41</h3>
+            <h4 className="text text-dark border-bottom py-2">Form 41</h4>
             <p><span className="text text-success">{success}</span><span className="text text-danger">{err}</span></p>
             <form className="contact-form ml-3" onSubmit={onSubmit}>
                 <div className="row">

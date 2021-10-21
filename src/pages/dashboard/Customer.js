@@ -63,7 +63,7 @@ const Customer = () => {
                             <div className="card-body">
                                 <h5 className="card-title text-success">Form 41</h5>
                                 <h1 className="card-text text-dark text-center mb-3"><i className="fa fa-edit mr-3"></i> </h1>
-                                <Link to="/form" className="btn btn-dark btn-block"><i className="fa fa-search"></i></Link>
+                                <Link to="/myforms" className="btn btn-dark btn-block"><i className="fa fa-search"></i></Link>
                             </div>
                         </div>
                     </div>  

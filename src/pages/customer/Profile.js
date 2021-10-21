@@ -58,34 +58,34 @@ const Profile = () => {
                 <div className="container">
                     <div className="row" style={{ color:"#7d7c7c"}}>
                         <div className="col-md-6 border-right">
-                            <h3 className="text text-primary border-bottom py-2">Profile Detail</h3>
-                            <span className="text-success float-right"><i className="fa fa-edit"></i></span>
+                            <h4 className="text text-dark border-bottom py-2">Profile Detail</h4>
+                            <span className="text-success float-right"></span>
                             <div className="row my-4 mt-3">
-                                <div className="col-md-5"><strong>YOUR ID</strong></div>
+                                <div className="col-md-5"><strong>ID</strong></div>
                                 <div className="col-md-7">{userData.userid}</div>
                             </div>
                             <div className="row my-4">
-                                <div className="col-md-5"><strong>NAME</strong></div>
+                                <div className="col-md-5"><strong>Name</strong></div>
                                 <div className="col-md-7">{userData.firstname} {userData.lastname}</div>
                             </div>
                             <div className="row my-4">
-                                <div className="col-md-5"><strong>EMAIL</strong></div>
+                                <div className="col-md-5"><strong>Email</strong></div>
                                 <div className="col-md-7">{userData.email}</div>
                             </div>
                             <div className="row my-4">
-                                <div className="col-md-5"><strong>MOBILE</strong></div>
+                                <div className="col-md-5"><strong>Mobile</strong></div>
                                 <div className="col-md-7">{userData.phone}</div>
                             </div>
                             <div className="row my-4">
-                                <div className="col-md-5"><strong>PROFILE TYPE</strong></div>
+                                <div className="col-md-5"><strong>Account type</strong></div>
                                 <div className="col-md-7">{userData.profiletype}</div>
                             </div>
                             <div className="row my-4">
-                                <div className="col-md-5"><strong>COMMAND ID</strong></div>
+                                <div className="col-md-5"><strong>Command ID</strong></div>
                                 <div className="col-md-7">{commandName}</div>
                             </div>
                             <div className="row my-4">
-                                <div className="col-md-5"><strong>ACCOUNT VERIFIED</strong></div>
+                                <div className="col-md-5"><strong>Is Acount verified?</strong></div>
                                 <div className="col-md-7">{userData.isaccountverified === 1 ? <span className="text text-success">YES</span> : <span className="text text-danger">NO</span>}</div>
                             </div>
                         </div>
