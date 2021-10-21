@@ -6,6 +6,9 @@ const Dcg = () => {
 
     const userData = JSON.parse(localStorage.getItem("userData"));
 
+    var today = new Date(),
+    date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+
     const [zones, setZones] = useState([]);
     const [commands, setCommands] = useState([]);
     const [users, setUsers] = useState([]);
@@ -72,6 +75,15 @@ const Dcg = () => {
     }, [userData.userid]);
 
 
+    const removeDateParts = (dateToday) => {
+
+        var str = dateToday;
+        var strArr = str.split("T");
+
+        return strArr[0];
+    }
+
+
     let zoneCount;
     let commandCount;
     let userCount;
@@ -109,7 +121,7 @@ const Dcg = () => {
         applicationCount = applications.length;
 
         applications.map(item => {
-           if(item.STATUS === 1){
+           if(removeDateParts(item.ASSIGNMENT_DATE) === date){
                 pendingApproval += 1;
            } 
            return pendingApproval;
@@ -179,7 +191,7 @@ const Dcg = () => {
                         <i style={{ fontSize : "250px" }} className="fa fa-signal"></i>
                     </div>
                     <div className="col-md-9">
-                        <p className="mt-4"><span className="py-4 px-4 text-danger">There are <strong>{pendingApproval}</strong> form41 applications requesting your attention and further action.</span></p>
+                        <p className="mt-4"><span className="py-4 px-4 text-danger">There are <strong>{pendingApproval}</strong> form41 applications assigned to you today <strong>{date}</strong>.</span></p>
                         <p className="mt-4"><span className="py-4 px-4 text-primary"><strong>{provisionalLicenseCount} Provisional License(s)</strong> have been issued to Excise Traders.</span></p>
                         <p className="mt-4"><span className="py-4 px-4 text-success"><strong>{licenseCount} Licenses</strong> have been issued to Excise Traders.</span></p>
                     </div>

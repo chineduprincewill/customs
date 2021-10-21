@@ -15,11 +15,11 @@ const Cac = (props) => {
             <div className="responsive-bar"><i className="fa fa-bars"></i></div>
             <Link to="/" className="user"><i className="fa fa-user"></i></Link>
             <button className="site-btn btn-link text-danger border-0" onClick={signOut}><i className="fa fa-power-off text-danger mr-3"></i>Logout</button>
-            <nav class="main-menu">
-                <ul class="menu-list">
-                    <li><button className="btn btn-warning mr-5">{props.role}</button></li>
-                    <li><Link class="text text-dark" to="/form41-list">Form41 List</Link></li>
-                    <li><Link class="text text-dark" to="/assignments">Assignments</Link></li>
+            <nav className="main-menu">
+                <ul className="menu-list">
+                    <li><Link to="/dashboard" classNameName="btn btn-warning mr-5 px-3">{props.role}</Link></li>
+                    <li><Link className="text text-dark" to="/form41-list">Form41 List</Link></li>
+                    <li><Link className="text text-dark" to="/assignments">Assignments</Link></li>
                 </ul>
             </nav>
         </div>

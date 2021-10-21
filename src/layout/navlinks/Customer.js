@@ -17,7 +17,7 @@ const Customer = (props) => {
             <button className="site-btn btn-link text-danger border-0" onClick={signOut}><i className="fa fa-power-off text-danger mr-3"></i>Logout</button>
             <nav className="main-menu">
                 <ul className="menu-list">
-                    <li><button className="btn btn-warning mr-5">{props.role}</button></li>
+                    <li><Link to="/dashboard" className="btn btn-warning mr-5 px-3">{props.role}</Link></li>
                     <li><Link className="text text-dark" to="/profile">Profile</Link></li>
                     <li><Link className="text text-dark" to="/myforms">Form 41</Link></li>
                 </ul>

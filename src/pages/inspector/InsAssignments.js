@@ -4,6 +4,7 @@ import axios from 'axios';
 //import moment from 'moment';
 
 import Spinner from '../../layout/Spinner';
+import FormStatus from '../dcg/FormStatus';
 
 const InsAssignments = () => {
 
@@ -32,6 +33,13 @@ const InsAssignments = () => {
         return strArr[1];
     }
 
+    const getIdFromMessage = (message) => {
+        var str = message;
+        var strArr = str.split(":");
+
+        return strArr[0];
+    }
+
     const removeDateParts = (date) => {
 
         var str = date;
@@ -53,6 +61,7 @@ const InsAssignments = () => {
                 <td>{removeIdFromMessage(item.MESSAGE)}</td>
                 <td>{removeDateParts(item.ASSIGNMENT_DATE)}</td>
                 <td>{removeDateParts(item.EXPIRY_DATE)}</td>
+                <td><FormStatus id={getIdFromMessage(item.MESSAGE)} /></td>
                 <td><Link className="btn btn-link text-info" to={`/alloc-detail/${item.ALLOCATIONID}`}><i className="fa fa-search"></i></Link></td>
             </tr>
         ))
@@ -77,8 +86,9 @@ const InsAssignments = () => {
                                 <td>EXCISE TRADER</td>
                                 <td>ASSIGNED OFFICER</td>
                                 <td>MESSAGE</td>
-                                <td>ASSIGNMENT DATE</td>
-                                <td>EXPIRY DATE</td>
+                                <td>ASSIGNED</td>
+                                <td>EXPIRES</td>
+                                <td>STATUS</td>
                                 <td>...</td>
                             </tr>
                         </thead>
