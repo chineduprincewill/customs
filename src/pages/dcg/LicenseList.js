@@ -3,12 +3,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Spinner from '../../layout/Spinner';
+import ShowLicenses from './ShowLicenses';
 
 const LicenseList = () => {
 
     const userData = JSON.parse(localStorage.getItem("userData"));
 
     const [licenses, setLicenses] = useState();
+
+    const [searchLicense, setSearchLicense] = useState("");
 
     useEffect(() => {
 
@@ -21,13 +24,10 @@ const LicenseList = () => {
           .catch( err => console.log(err))
     }, []);
 
+    const onChange = (e) => {
+        setSearchLicense(e.target.value)
 
-    const removeDateParts = (date) => {
-
-        var str = date;
-        var strArr = str.split("T");
-
-        return strArr[0];
+        console.log(searchLicense);
     }
 
 
@@ -37,26 +37,7 @@ const LicenseList = () => {
         LicenseListing = <Spinner />
     }
     else{
-        LicenseListing = licenses.map(item => (
-            <tr key={item.IDLICENSE} >
-                <td>{item.IDFORM}</td>
-                <td>{item.IDLICENSE}</td>
-                <td>{item.FORM41 ? item.FORM41[0].CNAME : "..."}</td>
-                <td>{removeDateParts(item.ISSUEDATE)}</td>
-                <td>{removeDateParts(item.EXPIRYDATE)}</td>
-                <td>{item.APPROVEDBY}</td>
-                <td>{item.EXCISE_NUMBER}</td>
-                <td>
-                    {item.STATUS === 1 && <span className="text text-primary">Provisional License</span>}
-                    {item.STATUS === 2 && <span className="text text-success">License</span>}
-                </td>
-                <td>
-                    {item.STATUS === 1 && <Link className="btn btn-link text-primary" to={`pr-license/${item.IDFORM}`}><i className="fa fa-search"></i></Link>}
-                    {item.STATUS === 2 && <Link className="btn btn-link text-primary" to={`license/${item.IDFORM}`}><i className="fa fa-search"></i></Link>}
-                    
-                </td>
-            </tr>
-        ))
+        LicenseListing = <ShowLicenses licenses={licenses} efn={searchLicense}/>
     }
 
     console.log(licenses);
@@ -74,6 +55,24 @@ const LicenseList = () => {
             </section>
             <section className="contact-page spad">
                 <div className="container">
+                <form>
+                        <div className="row p-3 border-bottom">
+                            <div className="col-md-3">
+                                <div className="form-group">
+                                    <input 
+                                        type="text" 
+                                        name="excisenumber"
+                                        className="form-control"
+                                        placeholder="Enter Excise Number"
+                                        onChange={onChange}
+                                    />
+                                </div>
+                            </div>
+                            <div className="col-md-9">
+                            </div>
+                        </div>
+                    </form>
+
                     <table className="table table-stripped table-hover col-lg-12">
                         <thead>
                             <tr>
